@@ -58,3 +58,22 @@ To upload the update bundle as a Memfault OTA payload:
 ```shell
 just upload <system>
 ```
+
+#### Updating via OTA
+
+The template uses Rugix Ctrl >=1.0.
+This means that updates require a hash or some sort of certification.
+Using the `-h` flag with `memfault-ota-rugix` and providing the generated hash
+at the end of a `bake` job will allow checking a hash for testing purposes.
+This should look something like (with hash `sha5120256:<SOME_HASH>`):
+
+```
+INFO Creating bundle, this may take a while...
+sha512-256:<SOME_HASH>
+```
+
+It can also be found at `build/<your-arch>/system.rugixb-hash`.
+
+**It is very important** to check the [signed updates](<https://rugix.org/docs/ctrl/updates/signed-updates/>)
+documentation for better guidance on your particular usecase.
+
